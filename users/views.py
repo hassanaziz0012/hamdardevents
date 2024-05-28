@@ -28,6 +28,8 @@ class RegisterView(View):
 
             login(request, user)
             return redirect('home')
+        else:
+            return render(request, 'register.html', {"form": form})
 
 
 class LoginView(View):
