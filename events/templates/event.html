@@ -11,14 +11,16 @@
 
     <p>Date: {{ event.event_date }}</p>
 
-    {% if entered == True %}
-        <a href="{% url 'leave-event' event.id %}">
-            <button class="btn btn-danger">Leave Event</button>
-        </a>
-    {% else %}
-        <a href="{% url 'enter-event' event.id %}">
-            <button class="btn btn-primary">Enter Event</button>
-        </a>
+    {% if request.user.is_authenticated %}
+        {% if entered == True %}
+            <a href="{% url 'leave-event' event.id %}">
+                <button class="btn btn-danger">Leave Event</button>
+            </a>
+        {% else %}
+            <a href="{% url 'enter-event' event.id %}">
+                <button class="btn btn-primary">Enter Event</button>
+            </a>
+        {% endif %}
     {% endif %}
 
     <hr>
