@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "hamdardevents/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "hamdardevents/wsgi.py"
+        }
+    ]
+}

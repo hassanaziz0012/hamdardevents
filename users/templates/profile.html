@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Profile - Hamdard Events{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Hello, {{ member.user.username }}</h2>
+    <p>Welcome to your profile</p>
+    
+    <h4>Your settings</h4>
+    <table class="table table-striped">
+        <tr>
+            <th>Username</th>
+            <td>{{ member.user.username }}</td>
+        </tr>
+        <tr>
+            <th>CMS ID</th>
+            <td>{{ member.cms_id }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ member.user.email }}</td>
+        </tr>
+    </table>
+
+    <h4>Events</h4>
+    <p>You are currently registered for the following events:</p>
+
+    <table class="table table-striped">
+        {% for event in events %}
+            <tr>
+                <th>{{ event.name }}</th>
+                <td>{{ event.price }}</td>
+                <td>{{ event.event_date }}</td>
+                <td><a href="{% url 'event' event.id %}">See Details</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

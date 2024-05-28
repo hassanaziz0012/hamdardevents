@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ event.name }} - Hamdard Events{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1>{{ event.name }}</h1>
+
+    <p>Price: {{ event.price }}</p>
+
+    <p>Date: {{ event.event_date }}</p>
+
+    {% if entered == True %}
+        <a href="{% url 'leave-event' event.id %}">
+            <button class="btn btn-danger">Leave Event</button>
+        </a>
+    {% else %}
+        <a href="{% url 'enter-event' event.id %}">
+            <button class="btn btn-primary">Enter Event</button>
+        </a>
+    {% endif %}
+
+    <hr>
+    <h4>Participants</h4>
+
+    <table class="table table-striped">
+        {% for member in event.participants.all %}  
+            <tr>
+                <td>{{ member.user.username }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}
