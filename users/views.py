@@ -19,8 +19,8 @@ class RegisterView(View):
             user = User.objects.create(
                 username=form.cleaned_data['username'], 
                 email=form.cleaned_data['email'],
-                password=form.cleaned_data['password']
                 )
+            user.set_password(form.cleaned_data['password'])
             user.save()
 
             member = Member.objects.create(user=user, cms_id=form.cleaned_data['cms_id'])
