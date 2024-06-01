@@ -3,18 +3,27 @@
 
 {% block title %}Register - Hamdard Events{% endblock title %}
 {% block content %}
+<section class="register-section section-padding">
+    <div class="container mt-4">
+        <h1>Create an Account!</h1>
+    
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
 
-<div class="container mt-4">
-    <h1>Create an Account!</h1>
+            <button type="submit" class="btn custom-btn d-lg-block d-none me-2">
+                Register
+            </button>
+    
+        </form>
+        <p>
+            Already have an account? 
+            <a href="{% url 'login' %}" class="link-fx-1 color-contrast-higher mt-3 text-dark">
+                <span>Log in here!</span>
+                <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="15.5"></circle><line x1="10" y1="18" x2="16" y2="12"></line><line x1="16" y1="12" x2="22" y2="18"></line></g></svg>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
-    <p>
-        Already have an account? <a href="{% url 'login' %}">Log in here!</a>
-    </p>
-</div>
+            </a>
+        </p>
+    </div>
+</section>
 {% endblock content %}

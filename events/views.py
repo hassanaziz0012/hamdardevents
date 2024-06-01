@@ -9,6 +9,12 @@ class HomeView(View):
     def get(self, request):
         events = Event.objects.all().order_by('-creation_date')
         return render(request, 'home.html', context={"events": events})
+    
+
+class EventsView(View):
+    def get(self, request):
+        events = Event.objects.all().order_by('-creation_date')
+        return render(request, 'home.html', context={"events": events})
 
 
 class EventView(View):

@@ -65,3 +65,9 @@ class ProfileView(View):
         member = Member.objects.get(user=request.user)
         events = Event.objects.filter(participants=member)
         return render(request, 'profile.html', {"member": member, "events": events})
+    
+
+class ContactView(View):
+    def get(self, request):
+        return render(request, 'contact.html')
+
