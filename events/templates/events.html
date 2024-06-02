@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="schedule-section section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 text-center">
+                <h2 class="text-white mb-4">Event Schedule</h1>
+
+                <div class="table-responsive">
+                    <table class="schedule-table table table-dark">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">Date</th> -->
+                                <th scope="col">Monday</th>
+                                <th scope="col">Tuesday</th>
+                                <th scope="col">Wednesday</th>
+                                <th scope="col">Thursday</th>
+                                <th scope="col">Friday</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for event in monday_events %}
+                                <tr>
+                                    <td class="table-background-image-wrap pop-background-image">
+                                        <h3>{{ event.name }}</h3>
+
+                                        <p class="mb-2">{{ event.event_date }}</p>
+
+                                        <p>By Adele</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            {% for event in tuesday_events %}
+                                <tr>
+                                    <td></td>
+
+                                    <td class="table-background-image-wrap pop-background-image">
+                                        <h3>Pop Night</h3>
+
+                                        <p class="mb-2">5:00 - 7:00 PM</p>
+
+                                        <p>By Adele</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            {% for event in wednesday_events %}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td class="table-background-image-wrap pop-background-image">
+                                        <h3>{{ event.name }}</h3>
+
+                                        <p class="mb-2">{{ event.event_date }}</p>
+
+                                        <p>Managers: {{ event.display_managers }}</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            {% for event in thursday_events %}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td class="table-background-image-wrap pop-background-image">
+                                        <h3>Pop Night</h3>
+
+                                        <p class="mb-2">5:00 - 7:00 PM</p>
+
+                                        <p>By Adele</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            {% for event in friday_events %}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td class="table-background-image-wrap pop-background-image">
+                                        <h3>Pop Night</h3>
+
+                                        <p class="mb-2">5:00 - 7:00 PM</p>
+
+                                        <p>By Adele</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="all-events section-padding">
+    <div class="container">
+        <h1>All Events</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Managers</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in all_events %}
+                    <tr>
+                        <th>
+                            <a href="{% url 'event' event.id %}" class="text-primary">
+                                {{ event.name }}
+                            </a>
+                        </th>
+                        <td>{{ event.price }}</td>
+                        <td>{{ event.event_date }}</td>
+                        <td>{{ event.display_managers }}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
+</section>
+
+{% endblock content %}
