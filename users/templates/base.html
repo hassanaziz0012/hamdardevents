@@ -49,19 +49,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="{% url 'home' %}">Home</a>
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_3">Coming Soon</a>
+                            <a class="nav-link" href="{% url 'events' %}">Coming Soon</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="{% url 'events' %}">Schedule</a>
+                            <a class="nav-link" href="{% url 'events' %}">Schedule</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="{% url 'contact' %}">Contact</a>
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                         </li>
                     </ul>
 
@@ -139,7 +139,7 @@
                             </li>
 
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Coming Soon</a>
+                                <a href="{% url 'events' %}" class="site-footer-link">Coming Soon</a>
                             </li>
 
                             <li class="site-footer-link-item">
