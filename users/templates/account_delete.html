@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="account-delete-confirm-section section-padding">
+    <div class="text-center">
+        <h1>Are you sure you want to delete your account?</h1>
+        <p>This action is irreversible. All your data will be deleted permanently.</p>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn custom-btn d-lg-block d-none me-2">
+                    Delete
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+{% endblock content %}

@@ -71,3 +71,15 @@ class ContactView(View):
     def get(self, request):
         return render(request, 'contact.html')
 
+
+class AccountDeleteView(View):
+    def get(self, request):
+        return render(request, 'account_delete.html')
+    
+    def post(self, request):
+        user = User.objects.get(pk=request.user.pk)
+        member = Member.objects.get(user=user)
+        member.delete()
+        user.delete()
+        return redirect('home')
+        
