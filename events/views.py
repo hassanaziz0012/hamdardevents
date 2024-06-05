@@ -66,8 +66,16 @@ class EventView(View):
 class EnterEventView(View):
     action = None
     def get(self, request, pk):
-        event = get_object_or_404(Event, pk=pk)
         member = Member.objects.get(user=request.user)
+        event = get_object_or_404(Event, pk=pk)
+        if event.is_sports == True:
+            team = request.GET.get('team')
+            sport = request.GET.get('sport')
+
+            member.team = team
+            member.sport = sport
+            member.save()
+            
 
         if self.action == "enter":
             event.participants.add(member)

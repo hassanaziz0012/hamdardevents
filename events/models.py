@@ -8,6 +8,7 @@ class Event(models.Model):
     price = models.FloatField()
     creation_date = models.DateTimeField(default=timezone.now)
     event_date = models.DateTimeField()
+    is_sports = models.BooleanField(default=False)
 
     participants = models.ManyToManyField('users.Member', blank=True, related_name='event_participants')
     managers = models.ManyToManyField('users.Member', blank=True, related_name='event_managers')
@@ -20,3 +21,4 @@ class Event(models.Model):
     
     def __repr__(self) -> str:
         return f"<Event: {self.name}>"
+

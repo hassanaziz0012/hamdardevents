@@ -19,9 +19,35 @@
                 <button class="btn btn-danger">Leave Event</button>
             </a>
         {% else %}
-            <a href="{% url 'enter-event' event.id %}">
-                <button class="btn btn-primary">Enter Event</button>
-            </a>
+            {% if event.is_sports == True %}
+                <form action="{% url 'enter-event' event.id %}" method="get">
+                    <label for="team">Team Name</label>
+                    <input type="text" name="team" id="team" required class="form-control" placeholder="Enter your team name here...">
+                    
+                    <br>
+                    
+                    <label for="sport">Select sport</label>
+                    <select name="sport" id="sport" class="form-select" required>
+                        <option value="Cricket">Cricket</option>
+                        <option value="Football">Football</option>
+                        <option value="Tennis">Tennis</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Volleyball">Volleyball</option>
+                        <option value="Hockey">Hockey</option>
+                        <option value="Basketball">Basketball</option>
+                        <option value="Table Tennis">Table Tennis</option>
+                    </select>
+                    
+                    <br>
+
+                    <button type="submit" class="btn btn-primary">Enter Event</button>
+                </form>
+            {% else %}
+                <a href="{% url 'enter-event' event.id %}">
+                    <button class="btn btn-primary">Enter Event</button>
+                </a>
+            {% endif %}
+
         {% endif %}
     {% endif %}
 
@@ -29,10 +55,28 @@
     <h4>Participants</h4>
 
     <table class="table table-striped">
-        {% for member in event.participants.all %}  
-            <tr>
-                <td>{{ member.user.username }}</td>
-            </tr>
+        {% if event.is_sports == True %}
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>Sport</th>
+                </tr>
+            </thead>
+        {% endif %}
+
+        {% for member in event.participants.all %}
+            {% if event.is_sports == True %}
+                <tr>
+                    <td>{{ member.user.username }}</td>
+                    <td>{{ member.team }}</td>
+                    <td>{{ member.sport }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>{{ member.user.username }}</td>
+                </tr>
+            {% endif %}
         {% endfor %}
     </table>
 </div>

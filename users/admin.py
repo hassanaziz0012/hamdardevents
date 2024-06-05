@@ -1,5 +1,5 @@
 from django.contrib import admin
-from users.models import Member
+from users.models import Member, Society
 
 
 # Register your models here.
@@ -12,3 +12,8 @@ class MemberAdmin(admin.ModelAdmin):
     
     def email(self, member):
         return member.user.email
+
+
+@admin.register(Society)
+class SocietyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'president', 'vice_president')

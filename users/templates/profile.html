@@ -19,8 +19,20 @@
         <tr>
             <th>Email</th>
             <td>{{ member.user.email }}</td>
+        </tr>        
+    </table>
+    <h6>Sports Information</h4>
+    <table class="table table-striped">
+        <tr>
+            <th>Team</th>
+            <td>{{ member.team }}</td>
+        </tr>
+        <tr>
+            <th>Sport</th>
+            <td>{{ member.sport }}</td>
         </tr>
     </table>
+
 
     <button class="btn btn-danger mb-3">
         <a href="{% url 'delete-account' %}">
