@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'events',
     'crispy_forms',
     'crispy_bootstrap5',
+    'markdownfield'
 ]
 
 MIDDLEWARE = [
