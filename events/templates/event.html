@@ -7,11 +7,32 @@
 <div class="container mt-4">
     <h1>{{ event.name }}</h1>
 
-    <p>Event is being managed by: {{ event.display_managers }}</p>
+    <img src="{{ event.image_url }}" alt="image" class="img-fluid mt-3">
 
-    <p>Price: {{ event.price }}</p>
 
-    <p>Date: {{ event.event_date }}</p>
+    <div class="event-info mt-5">
+        <h5>Information</h5>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Managers</th>
+                    <td>{{ event.display_managers }}</td>
+                </tr>
+    
+                <tr>
+                    <th>Price</th>
+                    <td>{{ event.price }}</td>
+                </tr>
+    
+                <tr>
+                    <th>Date</th>
+                    <td>{{ event.event_date }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
 
     {% if request.user.is_authenticated %}
         {% if entered == True %}
@@ -21,6 +42,7 @@
         {% else %}
             {% if event.is_sports == True %}
                 <form action="{% url 'enter-event' event.id %}" method="get">
+                    <h5>Enter event</h5>
                     <label for="team">Team Name</label>
                     <input type="text" name="team" id="team" required class="form-control" placeholder="Enter your team name here...">
                     
