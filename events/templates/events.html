@@ -24,12 +24,16 @@
                         <tbody>
                             {% for event in monday_events %}
                                 <tr>
-                                    <td class="table-background-image-wrap pop-background-image">
-                                        <h3>{{ event.name }}</h3>
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
 
                                         <p class="mb-2">{{ event.event_date }}</p>
 
-                                        <p>By Adele</p>
+                                        <p>Managers: {{ event.display_managers }}</p>
 
                                         <div class="section-overlay"></div>
                                     </td>
@@ -40,12 +44,16 @@
                                 <tr>
                                     <td></td>
 
-                                    <td class="table-background-image-wrap pop-background-image">
-                                        <h3>Pop Night</h3>
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
 
                                         <p class="mb-2">5:00 - 7:00 PM</p>
 
-                                        <p>By Adele</p>
+                                        <p>Managers: {{ event.display_managers }}</p>
 
                                         <div class="section-overlay"></div>
                                     </td>
@@ -57,8 +65,12 @@
                                     <td></td>
                                     <td></td>
 
-                                    <td class="table-background-image-wrap pop-background-image">
-                                        <h3>{{ event.name }}</h3>
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
 
                                         <p class="mb-2">{{ event.event_date }}</p>
 
@@ -75,12 +87,16 @@
                                     <td></td>
                                     <td></td>
 
-                                    <td class="table-background-image-wrap pop-background-image">
-                                        <h3>Pop Night</h3>
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
 
                                         <p class="mb-2">5:00 - 7:00 PM</p>
 
-                                        <p>By Adele</p>
+                                        <p>Managers: {{ event.display_managers }}</p>
 
                                         <div class="section-overlay"></div>
                                     </td>
@@ -94,12 +110,16 @@
                                     <td></td>
                                     <td></td>
 
-                                    <td class="table-background-image-wrap pop-background-image">
-                                        <h3>Pop Night</h3>
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
 
                                         <p class="mb-2">5:00 - 7:00 PM</p>
 
-                                        <p>By Adele</p>
+                                        <p>Managers: {{ event.display_managers }}</p>
 
                                         <div class="section-overlay"></div>
                                     </td>
@@ -137,9 +157,6 @@
                         <td>{{ event.price }}</td>
                         <td>{{ event.event_date }}</td>
                         <td>{{ event.display_managers }}</td>
-                        <td>
-                            <img src="{{ event.image_url }}" alt="image">
-                        </td>
                     </tr>
                 {% endfor %}
         </table>
