@@ -665,7 +665,7 @@ strong {
   background: #f0a5a5 !important;
 }
 
-.schedule-table thead th {
+.schedule-table th {
   background-color: var(--secondary-color);
 }
 
@@ -686,9 +686,9 @@ strong {
   border-bottom-color: transparent;
 }
 
-.schedule-table th + td {
+/* .schedule-table th + td {
   border-bottom: 0;
-}
+} */
 
 .schedule-table thead th:last-child {
   border-right-color: transparent;
