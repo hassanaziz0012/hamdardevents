@@ -140,6 +140,18 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 STATIC_URL = 'static/'
 STATIC_ROOT = "static"
 
+IMGUR_CLIENT_ID = os.environ.get("IMGUR_CLIENT_ID")
+IMGUR_CLIENT_SECRET = os.environ.get("IMGUR_CLIENT_SECRET")
+
+STORAGES = {
+    "default": {
+        "BACKEND": "hamdardevents.imgur_storage.ImgurStorage"
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"
+    }
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

@@ -5,6 +5,7 @@ from django.utils import timezone
 # Create your models here.
 class Event(models.Model):
     name = models.CharField(max_length=255)
+    image = models.ImageField(null=True)
     price = models.FloatField()
     creation_date = models.DateTimeField(default=timezone.now)
     event_date = models.DateTimeField()
@@ -15,6 +16,10 @@ class Event(models.Model):
 
     def display_managers(self):
         return ', '.join(list(self.managers.all().values_list('user__username', flat=True)))
+    
+    @property
+    def image_url(self):
+        return self.image.url if self.image else None
 
     def __str__(self) -> str:
         return self.name
