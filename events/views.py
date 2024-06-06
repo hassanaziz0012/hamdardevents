@@ -46,7 +46,13 @@ class EventsView(View):
             "tuesday_events": tuesday_events,
             "wednesday_events": wednesday_events,
             "thursday_events": thursday_events,
-            "friday_events": friday_events
+            "friday_events": friday_events,
+
+            "monday_empty_cells": range(5 - len(monday_events)),
+            "tuesday_empty_cells": range(5 - len(tuesday_events)),
+            "wednesday_empty_cells": range(5 - len(wednesday_events)),
+            "thursday_empty_cells": range(5 - len(thursday_events)),
+            "friday_empty_cells": range(5 - len(friday_events)),
             }
         return render(request, 'events.html', context=context)
 
