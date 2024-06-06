@@ -9,6 +9,10 @@
 
     <img src="{{ event.image_url }}" alt="image" class="img-fluid mt-3">
 
+    <p>
+        {{ event.content_rendered|safe}}
+    </p>
+
 
     <div class="event-info mt-5">
         <h5>Information</h5>
