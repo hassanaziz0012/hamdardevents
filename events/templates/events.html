@@ -24,7 +24,7 @@
                         <tbody>
                             {% for event in monday_events %}
                                 <tr>
-                                    <td class="table-background-image-wrap pop-background-image" style="background-image: url({{ event.image.url }});">
+                                    <td class="table-background-image-wrap pop-background-image" style="background-image: url({{ event.image_url }});">
                                         <h3>{{ event.name }}</h3>
 
                                         <p class="mb-2">{{ event.event_date }}</p>
