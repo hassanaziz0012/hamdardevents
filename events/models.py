@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from markdownfield.models import MarkdownField, RenderedMarkdownField
+from markdownfield.validators import VALIDATOR_STANDARD
 
 
 # Create your models here.
@@ -13,6 +15,9 @@ class Event(models.Model):
 
     participants = models.ManyToManyField('users.Member', blank=True, related_name='event_participants')
     managers = models.ManyToManyField('users.Member', blank=True, related_name='event_managers')
+    
+    content = MarkdownField(rendered_field="content_rendered", validator=VALIDATOR_STANDARD, null=True, blank=True)
+    content_rendered = RenderedMarkdownField(null=True)
 
     def display_managers(self):
         return ', '.join(list(self.managers.all().values_list('user__username', flat=True)))
