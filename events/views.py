@@ -8,8 +8,47 @@ from datetime import datetime, timedelta
 # Create your views here.
 class HomeView(View):
     def get(self, request):
-        events = Event.objects.all().order_by('-creation_date')
-        return render(request, 'home.html', context={"events": events})
+        # Get the current date
+        today = datetime.today()
+
+        # Find the start of the week (Monday)
+        start_of_week = today - timedelta(days=today.weekday())
+
+        # List to store the dates of the weekdays
+        weekdays = []
+
+        # Calculate the dates for Monday to Friday
+        for i in range(5):
+            day = start_of_week + timedelta(days=i)
+            weekdays.append(day)
+
+        # Print the dates
+        for weekday in weekdays:
+            print(weekday.date())
+
+        monday_events = Event.objects.filter(event_date__date=weekdays[0].date())
+        tuesday_events = Event.objects.filter(event_date__date=weekdays[1].date())
+        wednesday_events = Event.objects.filter(event_date__date=weekdays[2].date())
+        thursday_events = Event.objects.filter(event_date__date=weekdays[3].date())
+        friday_events = Event.objects.filter(event_date__date=weekdays[4].date())
+
+        all_events = Event.objects.all().order_by('-creation_date')
+
+        context = {
+            "all_events": all_events, 
+            "monday_events": monday_events,
+            "tuesday_events": tuesday_events,
+            "wednesday_events": wednesday_events,
+            "thursday_events": thursday_events,
+            "friday_events": friday_events,
+
+            "monday_empty_cells": range(5 - len(monday_events)),
+            "tuesday_empty_cells": range(5 - len(tuesday_events)),
+            "wednesday_empty_cells": range(5 - len(wednesday_events)),
+            "thursday_empty_cells": range(5 - len(thursday_events)),
+            "friday_empty_cells": range(5 - len(friday_events)),
+            }
+        return render(request, 'home.html', context=context)
     
 
 class EventsView(View):

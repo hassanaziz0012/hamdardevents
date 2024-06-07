@@ -1,0 +1,147 @@
+<section class="schedule-section section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 text-center">
+                <h2 class="text-white mb-4">Event Schedule</h1>
+
+                <div class="table-responsive">
+                    <table class="schedule-table table table-dark">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">Date</th> -->
+                                <!-- <th scope="col">Monday</th>
+                                <th scope="col">Tuesday</th>
+                                <th scope="col">Wednesday</th>
+                                <th scope="col">Thursday</th>
+                                <th scope="col">Friday</th> -->
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>  
+                                <th>Monday</th>
+                                {% for event in monday_events %}
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
+
+                                        <p class="mb-2">{{ event.event_date }}</p>
+
+                                        <p>Managers: {{ event.display_managers }}</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                {% endfor %}
+
+                                {% for _ in monday_empty_cells %}
+                                    <td></td>
+                                {% endfor %}
+                            </tr>
+
+                            <tr>
+                                <th>Tuesday</th>
+                                {% for event in tuesday_events %}
+                                    <td></td>
+
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
+
+                                        <p class="mb-2">{{ event.event_date }}</p>
+
+                                        <p>Managers: {{ event.display_managers }}</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                {% endfor %}
+
+                                {% for _ in tuesday_empty_cells %}
+                                    <td class="table-background-image-wrap"></td>
+                                {% endfor %}
+                            </tr>
+
+                            <tr>
+                                <th>Wednesday</th>
+                                {% for event in wednesday_events %}
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
+
+                                        <p class="mb-2">{{ event.event_date }}</p>
+
+                                        <p>Managers: {{ event.display_managers }}</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                {% endfor %}
+
+                                {% for _ in wednesday_empty_cells %}
+                                    <td></td>
+                                {% endfor %}
+                            </tr>
+
+                            <tr>
+                                <th>Thursday</th>
+                                {% for event in thursday_events %}
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
+
+                                        <p class="mb-2">{{ event.event_date }}</p>
+
+                                        <p>Managers: {{ event.display_managers }}</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                {% endfor %}
+
+                                {% for _ in thursday_empty_cells %}
+                                    <td></td>
+                                {% endfor %}
+                            </tr>
+
+                            <tr>
+                                <th>Friday</th>
+                                {% for event in friday_events %}
+                                    <td class="table-background-image-wrap">
+                                        <h3>
+                                            <a href="{% url 'event' event.pk %}">
+                                                {{ event.name }}
+                                            </a>
+                                        </h3>
+
+                                        <p class="mb-2">{{ event.event_date }}</p>
+
+                                        <p>Managers: {{ event.display_managers }}</p>
+
+                                        <div class="section-overlay"></div>
+                                    </td>
+                                {% endfor %}
+
+                                {% for _ in friday_empty_cells %}
+                                    <td></td>
+                                {% endfor %}
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
